@@ -21,16 +21,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-// Logout Function
-Route::get('/logout', [LoginController::class, 'logout']);
-
-
 // Authentication using constructor in controller function
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('home');
-// Route::view('/contact', 'contact');
-// Route::view('/about', 'about');
-
+Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact');
 
 // Authentication using group middleware function
 Route::middleware(['auth'])->group(function () {
@@ -39,3 +32,6 @@ Route::middleware(['auth'])->group(function () {
 
 // Authentication using route middleware
 Route::view('/services', 'services')->middleware('auth');
+
+// Logout Function
+Route::get('/logout', [LoginController::class, 'logout']);
