@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,6 +20,10 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+
+// Logout Function
+Route::get('/logout', [LoginController::class, 'logout']);
+
 
 // Authentication using constructor in controller function
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
